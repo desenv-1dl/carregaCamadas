@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="/plugins/carregaCamadas" >
+     <file>icon.png</file>
+  </qresource>
+</RCC>
