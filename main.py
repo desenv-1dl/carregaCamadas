@@ -57,7 +57,8 @@ class Testcamadas:
                 self.layers = dict()
                 cursor.execute("select f_table_schema, f_table_name, type from public.geometry_columns ;")
                 for valores in cursor.fetchall():
-                    self.layers[valores[1]] = (valores[0],valores[2])
+                    if (valores[0] != 'tiger') and (valores[0] != 'public') and (valores[0] != 'validation'):
+                        self.layers[valores[1]] = (valores[0],valores[2])
                 self.styles={}
                 cursor.execute("select id, stylename from layer_styles;")
                 for valores in cursor.fetchall():
@@ -88,8 +89,8 @@ class Testcamadas:
         p = grupodb.addGroup ('PONTO')
         l = grupodb.addGroup ('LINHA')
         a = grupodb.addGroup ('AREA')
-        tipoGeom = {'MULTIPOLYGON': a, 'MULTILINESTRING': l, 'MULTIPOINT': p}
-        schemaDic = {'MULTIPOLYGON':{},'MULTIPOINT':{},'MULTILINESTRING':{}}
+        tipoGeom = {'MULTIPOLYGON': a, 'MULTILINESTRING': l, 'MULTIPOINT': p, 'POLYGON': a}
+        schemaDic = {'MULTIPOLYGON':{},'MULTIPOINT':{},'MULTILINESTRING':{}, 'POLYGON' : {}}
         for layer in self.layers:
             layerName = layer
             schemaName = self.layers[layer][0]
@@ -114,14 +115,13 @@ class Testcamadas:
         else:
             return False 
     
-                     
     def carregarEstilos(self, layer, tipo):
+        layer.loadDefaultStyle()
         tipoEstilo = { 1 : 'aquisicao_', 2 : 'reambulacao_', 3 : 'revisao_', 4 : 'vetorizacao_'}
         nomeEstilo = tipoEstilo[tipo]+layer.name()
         Estilo = layer.getStyleFromDatabase(str(self.styles.get(nomeEstilo)), "Estilo não encontrado")
         layer.applyNamedStyle(Estilo)			
-        self.iface.mapCanvas().refreshAllLayers()
-    
+            
     def addCon(self):
         try:
             connects=[]
