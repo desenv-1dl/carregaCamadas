@@ -1,6 +1,6 @@
 # -*- coding: latin1 -*-
 
-from mainPlugin import Testcamadas     
+from main import Testcamadas     
 
 
 def name():
@@ -10,7 +10,6 @@ def description():
 def version():
   return "Version 0.1"
 def classFactory(iface):
-  from mainPlugin import Testcamadas
   return Testcamadas(iface)
 def qgisMinimumVersion():
   return "2.0"

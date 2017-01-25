@@ -98,6 +98,7 @@ class Ui_Dialog(object):
         self.comboBox_2.addItem(_fromUtf8(""))
         self.comboBox_2.addItem(_fromUtf8(""))
         self.comboBox_2.addItem(_fromUtf8(""))
+        self.comboBox_2.addItem(_fromUtf8(""))
         self.verticalLayout_2.addWidget(self.comboBox_2)
         self.verticalLayout_3.addLayout(self.verticalLayout_2)
         
@@ -110,7 +111,6 @@ class Ui_Dialog(object):
         self.verticalLayout_3.addWidget(self.pushButton)
         
         self.retranslateUi(Dialog)
-        #self.comboBox_4.currentIndexChanged.connect(self.selecionarEstilos)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
 
@@ -122,6 +122,7 @@ class Ui_Dialog(object):
         self.comboBox_2.setItemText(0, _translate("Dialog", "Selecione ...", None))
         self.comboBox_2.setItemText(1, _translate("Dialog", "Carregar camadas com geometria", None))
         self.comboBox_2.setItemText(2, _translate("Dialog", "Carregar todas as camadas", None))
+        self.comboBox_2.setItemText(3, _translate("Dialog", "Carregar Classes da Cobertura Terrestre", None))
         self.label_4.setText(_translate("Dialog", "Selecione o tipo de estilo:", None))
         self.comboBox_4.setItemText(0, _translate("Dialog", "Selecione ...", None))
         self.comboBox_4.setItemText(1, _translate("Dialog", "Estilo de Aquisição", None))
